@@ -1,4 +1,4 @@
-package com.nomaditas.firmament
+package com.nomaditas.firmament.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.nomaditas.firmament.R
 import com.nomaditas.firmament.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.nomaditas.firmament
+package com.nomaditas.firmament.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

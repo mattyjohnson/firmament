@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.nomaditas.firmament.GalleryFragment"
+        android:name="com.nomaditas.firmament.ui.GalleryFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_gallery">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.nomaditas.firmament.DetailsFragment"
+        android:name="com.nomaditas.firmament.ui.DetailsFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_details">
 
