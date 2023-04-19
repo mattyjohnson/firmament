@@ -8,9 +8,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RepositoryImpl : Repository {
-    private var movies = MutableLiveData<List<ApiResponse>>()
+    private var movies = MutableLiveData<List<Movie>>()
 
-    override fun getMovies(): MutableLiveData<List<ApiResponse>> {
+    override fun getMovies(): MutableLiveData<List<Movie>> {
         return movies
     }
 
@@ -22,8 +22,16 @@ class RepositoryImpl : Repository {
             }
 
             override fun onResponse(call: Call<List<ApiResponse>>, response: Response<List<ApiResponse>>) {
-                movies.value = response.body()
+                movies.value = response.body()?.let {
+                    mapToDomain(it)
+                }
             }
         })
+    }
+
+    fun mapToDomain(data: List<ApiResponse>): List<Movie> {
+        return data.map {
+            Movie(it.Title, it.Poster)
+        }
     }
 }

@@ -1,7 +1,6 @@
 package com.nomaditas.firmament.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,10 +27,8 @@ class GalleryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         model.getMovies().observe(viewLifecycleOwner) {
-            for (m in it) {
-                Log.i("MJJ", m.Title)
-                Log.i("MJJ", m.Actors)
-            }
+            val adapter = GalleryAdapter(it)
+            binding.gridMovies.adapter = adapter
         }
     }
 

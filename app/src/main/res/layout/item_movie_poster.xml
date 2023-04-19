@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardMoviePoster"
+    android:layout_width="wrap_content"
+    android:layout_height="100dp"
+    android:layout_margin="@dimen/small"
+    app:cardElevation="@dimen/small"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/imgMoviePoster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            tools:src="@drawable/img_poster" />
+
+        <TextView
+            android:id="@+id/textMovieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:padding="@dimen/small"
+            android:textColor="@color/black"
+            tools:text="They Shall Not Grow Old" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
