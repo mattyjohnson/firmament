@@ -1,6 +1,6 @@
-package com.nomaditas.firmament.domain
+package com.nomaditas.firmament.network
 
-data class Movie(
+class ApiResponse(
     val DVD: String,
     val Plot: String,
     val Type: String,
