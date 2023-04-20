@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardMoviePoster"
     android:layout_width="wrap_content"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:layout_margin="@dimen/small"
+    app:cardBackgroundColor="@color/sky_blue_dark_2"
     app:cardElevation="@dimen/small"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -18,8 +19,8 @@
 
         <ImageView
             android:id="@+id/imgMoviePoster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/poster_width"
+            android:layout_height="@dimen/poster_height"
             android:contentDescription="@null"
             tools:src="@drawable/img_poster" />
 
@@ -30,7 +31,6 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:padding="@dimen/small"
-            android:textColor="@color/black"
             tools:text="They Shall Not Grow Old" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
