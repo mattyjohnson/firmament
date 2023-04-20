@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/sky_blue_dark_1"
+    android:padding="@dimen/medium"
     tools:context=".ui.GalleryFragment">
 
     <androidx.core.widget.ContentLoadingProgressBar
@@ -18,11 +19,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_background"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/small"
+        android:hint="@string/search_bar_hint"
+        android:inputType="text"
+        android:padding="@dimen/medium"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gridMovies"
-        android:padding="@dimen/medium"
+        android:layout_marginTop="@dimen/medium"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/searchBar"
         app:spanCount="3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

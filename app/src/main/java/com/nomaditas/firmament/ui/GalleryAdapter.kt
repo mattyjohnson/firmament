@@ -3,6 +3,8 @@ package com.nomaditas.firmament.ui
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
@@ -13,9 +15,10 @@ import java.util.*
 
 class GalleryAdapter(
     private val data: List<Movie>,
-) : RecyclerView.Adapter<GalleryAdapter.AccountOrderViewHolder>() {
+) : RecyclerView.Adapter<GalleryAdapter.AccountOrderViewHolder>(), Filterable {
 
     private lateinit var circularProgressDrawable: CircularProgressDrawable
+    val resultsList = ArrayList(data)
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -35,10 +38,40 @@ class GalleryAdapter(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: AccountOrderViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(resultsList[position])
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = resultsList.size
+
+    override fun getFilter() = textFilter
+
+    private val textFilter: Filter = object : Filter() {
+        override fun performFiltering(constraint: CharSequence): FilterResults {
+            val filteredList: MutableList<Movie> = ArrayList()
+            if (constraint.isEmpty()) {
+                filteredList.addAll(data)
+            } else {
+                val filterPattern = constraint.toString().lowercase(Locale.getDefault()).trim { it <= ' ' }
+                for (item in resultsList) {
+                    if (item.title.lowercase(Locale.ROOT).contains(filterPattern)) {
+                        filteredList.add(item)
+                    } else if (item.genre.lowercase(Locale.ROOT).contains(filterPattern)) {
+                        filteredList.add(item)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        @SuppressLint("NotifyDataSetChanged")
+        override fun publishResults(constraint: CharSequence, results: FilterResults) {
+            resultsList.clear()
+            resultsList.addAll(results.values as List<Movie>)
+            notifyDataSetChanged()
+        }
+    }
 
     inner class AccountOrderViewHolder(
         private val binding: ItemMoviePosterBinding,

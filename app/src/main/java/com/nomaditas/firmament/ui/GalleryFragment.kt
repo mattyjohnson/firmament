@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.nomaditas.firmament.databinding.FragmentGalleryBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,8 +28,16 @@ class GalleryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         model.getMovies().observe(viewLifecycleOwner) {
-            val adapter = GalleryAdapter(it)
-            binding.gridMovies.adapter = adapter
+            if (it.isNotEmpty()) {
+                binding.progressBar.visibility = View.GONE
+
+                val adapter = GalleryAdapter(it)
+                binding.gridMovies.adapter = adapter
+
+                binding.searchBar.addTextChangedListener { filter ->
+                    adapter.filter.filter(filter)
+                }
+            }
         }
     }
 
