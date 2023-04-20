@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.nomaditas.firmament.databinding.FragmentGalleryBinding
+import com.nomaditas.firmament.ext.toDp
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GalleryFragment : Fragment() {
@@ -42,6 +44,11 @@ class GalleryFragment : Fragment() {
                     binding.searchBar.text.clear()
                 }
             }
+        }
+
+        view.viewTreeObserver.addOnGlobalLayoutListener {
+            val spanCount = view.width.toDp / 100 - 1 // TODO: check this relationship works for different screen sizes
+            (binding.gridMovies.layoutManager as GridLayoutManager).spanCount = spanCount
         }
     }
 
