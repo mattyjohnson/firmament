@@ -23,19 +23,36 @@
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autofillHints="no"
         android:background="@drawable/search_background"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="@dimen/small"
         android:hint="@string/search_bar_hint"
+        android:imeOptions="actionDone"
         android:inputType="text"
         android:padding="@dimen/medium"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/buttonClearSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/small"
+        android:background="@color/transparent"
+        android:contentDescription="@string/content_description_clear_search"
+        android:padding="@dimen/small"
+        android:src="@drawable/ic_search_clear"
+        app:layout_constraintBottom_toBottomOf="@id/searchBar"
+        app:layout_constraintEnd_toEndOf="@id/searchBar"
+        app:layout_constraintTop_toTopOf="@id/searchBar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gridMovies"
-        android:layout_marginTop="@dimen/medium"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/medium"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/searchBar"
         app:spanCount="3" />

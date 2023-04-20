@@ -37,6 +37,10 @@ class GalleryFragment : Fragment() {
                 binding.searchBar.addTextChangedListener { filter ->
                     adapter.filter.filter(filter)
                 }
+
+                binding.buttonClearSearch.setOnClickListener {
+                    binding.searchBar.text.clear()
+                }
             }
         }
     }

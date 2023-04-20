@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Firmament</string>
     <string name="search_bar_hint">Search title or genre</string>
+    <string name="content_description_clear_search">Clear search</string>
 </resources>
