@@ -15,7 +15,8 @@ import java.util.*
 
 class GalleryAdapter(
     private val data: List<Movie>,
-) : RecyclerView.Adapter<GalleryAdapter.AccountOrderViewHolder>(), Filterable {
+    private val onClick: (String) -> Unit,
+) : RecyclerView.Adapter<GalleryAdapter.ViewHolder>(), Filterable {
 
     private lateinit var circularProgressDrawable: CircularProgressDrawable
     val resultsList = ArrayList(data)
@@ -30,14 +31,14 @@ class GalleryAdapter(
         circularProgressDrawable.start()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountOrderViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemMoviePosterBinding.inflate(inflater, parent, false)
-        return AccountOrderViewHolder(binding)
+        return ViewHolder(binding, onClick)
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    override fun onBindViewHolder(holder: AccountOrderViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(resultsList[position])
     }
 
@@ -73,8 +74,9 @@ class GalleryAdapter(
         }
     }
 
-    inner class AccountOrderViewHolder(
+    inner class ViewHolder(
         private val binding: ItemMoviePosterBinding,
+        val onClick: (String) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.textMovieTitle.text = movie.title
@@ -82,6 +84,10 @@ class GalleryAdapter(
                 .load(movie.poster)
                 .placeholder(circularProgressDrawable)
                 .into(binding.imgMoviePoster)
+
+            itemView.setOnClickListener {
+                onClick(movie.title)
+            }
         }
     }
 }

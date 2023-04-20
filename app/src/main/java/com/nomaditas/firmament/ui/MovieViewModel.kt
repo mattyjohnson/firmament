@@ -11,4 +11,8 @@ class MovieViewModel(repository: Repository) : ViewModel() {
     fun getMovies(): MutableLiveData<List<Movie>> {
         return movies
     }
+
+    fun getMovie(title: String): Movie? {
+        return movies.value?.find { it.title == title }
+    }
 }
