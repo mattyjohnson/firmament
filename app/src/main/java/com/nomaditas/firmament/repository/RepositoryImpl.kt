@@ -1,6 +1,7 @@
-package com.nomaditas.firmament.domain
+package com.nomaditas.firmament.repository
 
 import androidx.lifecycle.MutableLiveData
+import com.nomaditas.firmament.domain.Movie
 import com.nomaditas.firmament.network.ApiResponse
 import com.nomaditas.firmament.network.ApiServiceFactory
 import retrofit2.Call
@@ -31,7 +32,7 @@ class RepositoryImpl : Repository {
 
     fun mapToDomain(data: List<ApiResponse>): List<Movie> {
         return data.map {
-            Movie(it.Title, it.Poster)
+            Movie(it.Title, it.Genre, it.Poster)
         }
     }
 }
