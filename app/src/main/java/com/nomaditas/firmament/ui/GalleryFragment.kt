@@ -35,17 +35,21 @@ class GalleryFragment : Fragment() {
 
         model.getMovies().observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
-                binding.progressBar.visibility = View.GONE
+                binding.apply {
+                    progressBar.visibility = View.GONE
 
-                val adapter = GalleryAdapter(it) { s -> onClick(s) }
-                binding.gridMovies.adapter = adapter
+                    val adapter = GalleryAdapter(it) { s -> onClick(s) }
+                    gridMovies.adapter = adapter
 
-                binding.searchBar.addTextChangedListener { filter ->
-                    adapter.filter.filter(filter)
-                }
+                    searchBar.addTextChangedListener { filter ->
+                        adapter.filter.filter(filter)
+                    }
 
-                binding.buttonClearSearch.setOnClickListener {
-                    binding.searchBar.text.clear()
+                    buttonClearSearch.setOnClickListener {
+                        searchBar.text.clear()
+                    }
+
+                    adapter.filter.filter(searchBar.text)
                 }
             }
         }
