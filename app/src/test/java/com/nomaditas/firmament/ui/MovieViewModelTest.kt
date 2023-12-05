@@ -14,7 +14,7 @@ class MovieViewModelTest {
     @MockK
     lateinit var repository: Repository
 
-    lateinit var sut: MovieViewModel
+    private lateinit var sut: MovieViewModel
 
     @Before
     fun doBefore() {
@@ -25,7 +25,7 @@ class MovieViewModelTest {
     }
 
     @Test
-    fun test_get_movie() {
+    fun `test get movie`() {
         sut.getMovies()
 
         val result1 = sut.getMovie(MOVIE_TITLE_1)
