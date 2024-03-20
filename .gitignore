@@ -11,6 +11,8 @@
 /.idea/androidTestResultsUserPreferences.xml
 /.idea/kotlinc.xml
 /.idea/deploymentTargetDropDown.xml
+/.idea/migrations.xml
+/.idea/ktlint-plugin.xml
 .DS_Store
 /build
 /captures

@@ -11,13 +11,12 @@ import com.bumptech.glide.Glide
 import com.nomaditas.firmament.R
 import com.nomaditas.firmament.databinding.ItemMoviePosterBinding
 import com.nomaditas.firmament.domain.Movie
-import java.util.*
+import java.util.Locale
 
 class GalleryAdapter(
     private val data: List<Movie>,
     private val onClick: (String) -> Unit,
 ) : RecyclerView.Adapter<GalleryAdapter.ViewHolder>(), Filterable {
-
     private lateinit var circularProgressDrawable: CircularProgressDrawable
     val resultsList = ArrayList(data)
 
