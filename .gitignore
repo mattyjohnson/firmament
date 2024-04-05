@@ -2,6 +2,7 @@
 .gradle
 /local.properties
 /.idea/caches
+/.idea/codeStyles
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
@@ -11,9 +12,11 @@
 /.idea/androidTestResultsUserPreferences.xml
 /.idea/kotlinc.xml
 /.idea/deploymentTargetDropDown.xml
+/.idea/deploymentTargetSelector.xml
 /.idea/migrations.xml
 /.idea/ktlint-plugin.xml
-.DS_Store
+/.idea/studiobot.xml
+/.idea/vcs.xml
 /build
 /captures
 .externalNativeBuild
